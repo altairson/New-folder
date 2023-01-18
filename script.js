@@ -94,7 +94,8 @@ $(document).ready(function() {
             }
         }
         $(this).addClass('box-' + n);
-        this.innerHTML = n > 0 ? n : 0;
+        this.innerHTML = n > 0 ? n : "";
+
         if ($(".hidden").length == 5) {
             alert("you won!");
         }
