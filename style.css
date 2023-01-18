@@ -33,14 +33,29 @@ body {
     cursor: pointer;
 }
 
-.green {
-    background-color: green;
-}
-
 .bomb {
-    background-color: black;
+    background-color: black !important;
 }
 
 .hidden {
     background-color: transparent !important;
+}
+
+.box-0 {
+    background-color: rgb(119, 255, 119);
+}
+.box-1 {
+    background-color: rgb(183, 255, 16);
+}
+.box-2 {
+    background-color: rgb(255, 196, 0);
+}
+.box-3 {
+    background-color: rgb(235, 77, 3);
+}
+.box-4 {
+    background-color: rgb(245, 49, 0);
+}
+.box-5 {
+    background-color: rgb(255, 0, 0);
 }
