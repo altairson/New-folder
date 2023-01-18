@@ -8,6 +8,7 @@ body {
     box-sizing: border-box;
     width: 100vw;
     background-color: #333;
+    flex-direction: column;
 }
 
 .content {
@@ -16,6 +17,20 @@ body {
     background-color: white;
     display: flex;
     flex-wrap: wrap;
+}
+
+.options {display: flex;align-items: center;justify-content: center;flex-direction: row;padding: 10px;}
+
+.options button {
+    padding: 3px 10px;
+    border: none;
+    border-radius: 3px;
+    font-family: cursive;
+    text-align: center;
+    background-color: skyblue;
+    color: black;
+    line-height: 24px;
+    box-shadow: 0px 0px 5px 0px black;
 }
 
 .box {
@@ -59,3 +74,19 @@ body {
 .box-5 {
     background-color: rgb(255, 0, 0);
 }
+
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: red;
+    }
+
+    .content {
+        width: calc(32vh + 16px);
+        height: calc(32vh + 16px);
+    }
+
+    .box {
+        height: 4vh;
+        width: 4vh;
+    }
+  }
