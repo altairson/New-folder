@@ -11,10 +11,28 @@
 </head>
 <body>
     
-<div class="options"><button id="newGame">new game</button></div>
-<div class="content">
+<header>
+    <div class="inner">
+        <img src="./media/icons/settings.png" alt="settings">
+        <div class="settings">
+            <select name="grid" id="grid">
+                <option value="2">2x2</option>
+                <option value="4">4x4</option>
+                <option selected value="8">8x8</option>
+                <option value="16">16x16</option>
+                <option value="32">32x32</option>
+                <!-- <option value="64">64x64</option> -->
+            </select>
+            <input type="number" id="mines" placeholder="mines" value="5">
+            <button id="apply">Apply</button>
+        </div>
+        <div class="timer">00:00:00</div>
+    </div>
+</header>
+<div class="content grid-8"></div>
+<div class="buttons">
+    <button id="newGame">new game</button>
 </div>
-
 
 
 

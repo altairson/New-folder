@@ -12,12 +12,141 @@ body {
 }
 
 .content {
-    width: calc(64vh + 16px);
-    height: calc(64vh + 16px);
-    background-color: #555;
+    background-color: #222;
     display: flex;
     flex-wrap: wrap;
-    box-shadow: 0px 0px 15px #111;
+    box-shadow: inset 0px 0px 10px #111;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(64vh + 16px);
+    padding: 0px 10px;
+    box-sizing: border-box;
+    background-color: #333;
+    box-shadow: inset 0px 0px 14px #111;
+}
+
+.inner .settings {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+select, input {border: none;margin: 0px 5px;width: 100px;background-color: #333;box-shadow: 0px 0px 5px black;color: white;}
+
+.settings button {
+    height: 18px;
+    padding: 0px 5px;
+    margin: 0;
+    font-size: 11px;
+    text-align: center;
+    color: white;
+    border: none;
+    background-color: #333;
+    box-shadow: 0px 0px 5px 0px #111;
+    cursor: pointer;
+}
+
+.timer {
+    color: aquamarine;
+}
+
+.settings button:hover {
+    box-shadow: 0px 0px 10px 0px #111;
+}
+
+select::before {
+    background-color: red !important;
+    color: purple !important;
+    border-color: red !important;
+    border: 1px solid red;
+}
+
+select::after {
+    color: blue !important;
+    background-color: green !important;
+    border-color: red !important;
+    border: 1px solid red;
+}
+
+.grid-2 {
+    width: calc(16vh + 4px) !important;
+    height: calc(16vh + 4px) !important;
+}
+
+.grid-2 .box {
+    width: 8vh;
+    height: 8vh;
+}
+
+.grid-4 {
+    width: calc(32vh + 8px) !important;
+    height: calc(32vh + 8px) !important;
+}
+.grid-4 .box {
+    width: 8vh;
+    height: 8vh;
+}
+
+
+.grid-8 {
+    width: calc(64vh + 16px) !important;
+    height: calc(64vh + 16px) !important;
+}
+.grid-8 .box {
+    width: 8vh;
+    height: 8vh;
+}
+
+.grid-16 {
+    width: calc(64vh + 32px) !important;
+    height: calc(64vh + 32px) !important;
+}
+.grid-16 .box {
+    width: 4vh;
+    height: 4vh;
+}
+
+.grid-32 {
+    width: calc(64vh + 64px) !important;
+    height: calc(64vh + 64px) !important;
+}
+.grid-32 .box {
+    width: 2vh;
+    height: 2vh;
+}
+
+/* .grid-64 {
+    width: calc(64vh + 128px) !important;
+    height: calc(64vh + 128px) !important;
+}
+.grid-64 .box {
+    width: 1vh;
+    height: 1vh;
+    font-size: 10px;
+} */
+
+.inner img {
+    width: 20px;
+    margin: 5px;
+    filter: invert(1) drop-shadow(0px 0px 10px black);
+    cursor: pointer;
 }
 
 .options {display: flex;align-items: center;justify-content: center;flex-direction: row;padding: 10px;}
@@ -35,17 +164,15 @@ body {
 }
 
 .box {
-    width: 8vh;
-    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1px;
-    box-shadow: 0px 0px 4px 0px #111;
+    box-shadow: 0px 0px 5px 0px #111;
 }
 
 .box:hover {
-    box-shadow: 0px 0px 10px #111;
+    box-shadow: 0px 0px 15px black;
     cursor: pointer;
 }
 

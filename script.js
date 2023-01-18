@@ -1,37 +1,58 @@
 $(document).ready(function() {
 
+    var list = [];
+    var Mines = [];
+    var minesCount = 5;
+    var dimensions = 8;
+
+
+
     let fillBase = () => {
+        dimensions = $("#grid").val();
         $('.content').html('');
-        for(let i = 1; i <= 64; i++) {
+        for(let i = 1; i <= dimensions * dimensions; i++) {
             $('.content').append(`<div class="box hidden"></div>`);
         }
     }
 
-    var list = [];
-    var Numbers = [];
+
+    $('#apply').click(() => {
+        if($('.content')[0].classList.length > 1) {
+            $('.content')[0].classList.remove($('.content')[0].classList[1]);
+        }
+        $('.content').addClass(`grid-${$('#grid').val()}`);
+        $("#newGame").click();
+    })
+
+   
     function newGame() {
-        Numbers = [];
-        let minesCount = 5;
+        Mines = [];
+        minesCount = $("#mines").val();
+        dimensions = $("#grid").val();
+
+        if(minesCount > ((dimensions * dimensions) / 2)) { 
+            alert('too many mines!');
+            return;
+        }
+
+
         while(minesCount > 0) {
-            let randomNumber = Math.floor(Math.random() * 64) + 1;
-            if(!Numbers.includes(randomNumber)) {
-                Numbers.push(randomNumber);
+            let randomNumber = Math.floor(Math.random() * (dimensions * dimensions)) + 1;
+            if(!Mines.includes(randomNumber)) {
+                Mines.push(randomNumber);
                 minesCount--;
             }
         }
         
-        for(let i = 0; i < 8; i++) 
+        for(let i = 0; i < dimensions; i++) 
         {
             let innerArr = [];
-            for(let j = 0; j < 8; j++) 
+            for(let j = 0; j < dimensions; j++) 
             {
-                innerArr[j] = Numbers.includes(i * 8 + j + 1) ? 1 : 0;
+                innerArr[j] = Mines.includes(i * dimensions + j + 1) ? 1 : 0;
             }
             list[i] = innerArr;
         }
-        console.log("bombs: " + Numbers);
-        
-        console.log("2D array: " + list);
         
         fillBase();
     }
@@ -47,9 +68,9 @@ $(document).ready(function() {
 
     function revealAll() {
         let boxes = $('.box');
-        for (var i = 0; i < Numbers.length; i++) {
-            boxes[Numbers[i] - 1].classList.remove('hidden')
-            boxes[Numbers[i] - 1].classList.add('bomb')
+        for (var i = 0; i < Mines.length; i++) {
+            boxes[Mines[i] - 1].classList.remove('hidden')
+            boxes[Mines[i] - 1].classList.add('bomb')
         }
     }
 
@@ -59,14 +80,14 @@ $(document).ready(function() {
         let y;
 
         // define cordinates of element in array representing clicked box
-        if (index.toString().length < 8) {
-            x = parseInt(index / 8);
-            y = index % 8;
+        if (index.toString().length < dimensions) {
+            x = parseInt(index / dimensions);
+            y = index % dimensions;
             console.log(index + " - x: " + x + " y: " + y);
         }
         else {
             x = 0;
-            y = index % 8;
+            y = index % dimensions;
             console.log(index + " - x: " + x + " y: " + y);
         }
 
@@ -85,28 +106,19 @@ $(document).ready(function() {
         let n = 0;
         for(let i = x - 1; i <= x + 1; i++) {
             for(let j = y - 1; j <= y + 1; j++) { 
-                if(i >= 0 && i <= 7 && j >= 0 && j <= 7) {
+                if(i >= 0 && i < dimensions && j >= 0 && j < dimensions) {
                     if(list[i][j] == 1) {
                         n++;
                     }
                 }
-                
             }
         }
         $(this).addClass('box-' + n);
         this.innerHTML = n > 0 ? n : "";
 
-        if ($(".hidden").length == 5) {
+        if ($(".hidden").length == minesCount) {
             alert("you won!");
         }
     });
-
-
-
-
-
-    $(".content").on("click", ".green", function() {
-        this.classList.remove('hidden');
-    });
-
+    newGame();
 })
