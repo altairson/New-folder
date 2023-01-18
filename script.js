@@ -104,12 +104,17 @@ $(document).ready(function() {
 
         // check if there is any bomb near 
         let n = 0;
+        let boxes = $('.box');
         for(let i = x - 1; i <= x + 1; i++) {
             for(let j = y - 1; j <= y + 1; j++) { 
                 if(i >= 0 && i < dimensions && j >= 0 && j < dimensions) {
                     if(list[i][j] == 1) {
                         n++;
                     }
+                    // ! this is where we reveal all surrounding boxes
+                    // else { 
+                    //     boxes[i * dimensions + j].classList.remove('hidden');
+                    // }
                 }
             }
         }
