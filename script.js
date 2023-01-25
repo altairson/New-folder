@@ -111,10 +111,10 @@ $(document).ready(function() {
                     if(list[i][j] == 1) {
                         n++;
                     }
-                    // ! this is where we reveal all surrounding boxes
-                    // else { 
-                    //     boxes[i * dimensions + j].classList.remove('hidden');
-                    // }
+                    // this is where we reveal all surrounding boxes
+                    else { 
+                        // boxes[i * dimensions + j].classList.remove('hidden');
+                    }
                 }
             }
         }
@@ -126,4 +126,37 @@ $(document).ready(function() {
         }
     });
     newGame();
+
+
+
+    function revealSurroundings(box, x, y) {
+        let n = 0;
+        let boxes = $('.box');
+
+        // 1 sircle
+        for(let k = 0; k < dimensions / 2; k++) {
+
+            // 1 row
+            for(let i = x - k; i <= x + k; i++) {
+
+                // 1 element
+                for(let j = y - k; j <= y + k; j++) { 
+
+                    if(i >= 0 && i < dimensions && j >= 0 && j < dimensions) {
+                        if(list[i][j] == 1) {
+                            n++;
+                        }
+                    }
+                }
+
+            }
+            if(n == 0) {
+                box.classList.remove('hidden');
+            }
+        }
+
+        
+        box.addClass('box-' + n);
+        box[0].innerHTML = n > 0 ? n : "";
+    }
 })
